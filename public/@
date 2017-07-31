@@ -1,0 +1,27 @@
+var myApp = angular.module('myApp',[]);
+myApp.controller('AppCtrl',['$scope', 
+'$http', function($scope, $http){
+	console.log("hello world from controller");
+	
+	$http.get('/contactlist');
+        person1 = {
+		name: 'Tim',
+		email: 'tim@odbc.com',
+		phone: '(312) 702-9000'
+	};
+	
+	person2 = {
+                name: 'Sara',
+                email: 'sara@odbc.com',
+                phone: '(310) 456-4000'
+        };
+
+	person3 = {
+                name: 'Derek',
+                email: 'derek@pwc.com',
+                phone: '(212) 754-3900'
+        };
+     	
+	var contactlist = [person1, person2, person3];
+
+	$scope.contactlist = contactlist;
