@@ -7,7 +7,7 @@ var refresh = function(){
 	$http.get('/contactlist').then(function (success){
 		console.log("i got the data i requested");
 		$scope.contactlist = success.data;
-		//$scope.contact = "";
+		$scope.contact = {};
 	});
 };
 refresh();
@@ -15,7 +15,6 @@ refresh();
 		console.log($scope.contact);
 		$http.post('/contactlist', $scope.contact).then(function(success){
 			console.log(success);
-			clear();
 			refresh();
 		});
 		
@@ -24,7 +23,6 @@ refresh();
 		console.log(id);
 		$http.delete('/contactlist/' + id).then(function(success){
 			console.log(success);
-			//clear();
 			refresh();
 		});
 	};
@@ -39,7 +37,6 @@ refresh();
 	$scope.update = function(){
 		console.log($scope.contact._id);
 		$http.put('/contactlist/' + $scope.contact._id, $scope.contact).then(function(success){
-			clear();
 			refresh();
 		});
 	};
@@ -47,7 +44,4 @@ refresh();
 	$scope.clear = function(){
 		$scope.contact = "";	
 	};
-	var clear = function(){
-		$scope.contact = "";
-	}
 }]);
